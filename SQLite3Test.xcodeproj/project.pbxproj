@@ -305,6 +305,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Kiwook-Swift.SQLite3Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SQLite3-Bridgin-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -323,6 +324,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Kiwook-Swift.SQLite3Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SQLite3-Bridgin-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
