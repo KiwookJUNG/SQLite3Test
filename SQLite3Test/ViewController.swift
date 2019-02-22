@@ -11,8 +11,9 @@ import UIKit
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        var db: OpaquePointer? = nil // SQLite 연결 정보를 담을 객체
+        var stmt: OpaquePointer? = nil // 컴파일된 SQL을 담을 객체
+    
     }
 
 
