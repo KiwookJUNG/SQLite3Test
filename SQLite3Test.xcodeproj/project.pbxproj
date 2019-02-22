@@ -12,6 +12,7 @@
 		A0F6B270221FE29C0091F95A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F6B26E221FE29C0091F95A /* Main.storyboard */; };
 		A0F6B272221FE29D0091F95A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0F6B271221FE29D0091F95A /* Assets.xcassets */; };
 		A0F6B275221FE29D0091F95A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F6B273221FE29D0091F95A /* LaunchScreen.storyboard */; };
+		A0F6B27E221FE2E80091F95A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F6B27D221FE2E70091F95A /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,8 @@
 		A0F6B271221FE29D0091F95A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0F6B274221FE29D0091F95A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0F6B276221FE29D0091F95A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0F6B27D221FE2E70091F95A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A0F6B27F221FE3270091F95A /* SQLite3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SQLite3-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0F6B27E221FE2E80091F95A /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +44,7 @@
 			children = (
 				A0F6B269221FE29C0091F95A /* SQLite3Test */,
 				A0F6B268221FE29C0091F95A /* Products */,
+				A0F6B27C221FE2E70091F95A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +59,7 @@
 		A0F6B269221FE29C0091F95A /* SQLite3Test */ = {
 			isa = PBXGroup;
 			children = (
+				A0F6B27F221FE3270091F95A /* SQLite3-Bridging-Header.h */,
 				A0F6B26A221FE29C0091F95A /* AppDelegate.swift */,
 				A0F6B26C221FE29C0091F95A /* ViewController.swift */,
 				A0F6B26E221FE29C0091F95A /* Main.storyboard */,
@@ -62,6 +68,14 @@
 				A0F6B276221FE29D0091F95A /* Info.plist */,
 			);
 			path = SQLite3Test;
+			sourceTree = "<group>";
+		};
+		A0F6B27C221FE2E70091F95A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0F6B27D221FE2E70091F95A /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
