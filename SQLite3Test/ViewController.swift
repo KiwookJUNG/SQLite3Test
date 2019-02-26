@@ -16,24 +16,29 @@ class ViewController: UIViewController {
         
         // 앱 내 문서 디렉터리 경로에서 SQLite DB 파일을 찾는다.
         let fileMgr = FileManager() // 1. 파일매니저 객체를 생성함
-        
+
         let docPathURL = fileMgr.urls(for: .documentDirectory, in: .userDomainMask).first!
         // 2. 생성된 매니저 객체를 사용하여 앱 내의 문서 디렉터리 경로를 찾고, 이를 URL 객체로 생성한다.
-        
-        let dbPath = docPathURL.appendingPathComponent("db.sqlite").path
+
+        let dbPath = try! docPathURL.appendingPathComponent("db.sqlite").path
         // URL 객체에 "db.sqlite" 파일 경로를 추가한 SQLite3 데이터 베이스 경로를 만들어낸다.
-        
+
         // FileManager()를 사용하지 않고 커스텀 프로퍼티 리스트를 다룰 때 사용했던
         // let path = NSSearchPathForDirectoriesInDomains(.documnetDirectory, .userDomainMasK, true)[0] as NSStirng
         // let dbPath = path.strings(byAppendingPaths: ["db.sqlite"])[0]
         // 와 동일하게 사용 할 수 있음.
+       
+        if fileMgr.fileExists(atPath: dbPath) == false { // dbPath 경로에 파일이 잇는지 없는지 체크한다.
+            
+            // 만약 파일이 없다면 앱 번들에 포함된 db.sqlite 파일의 경로를 읽어온다.
+            let dbSource = Bundle.main.path(forResource: "db", ofType: "sqlite")
+            // 번들 파일 경로에 있는 db.sqlite 파일을 dbPath 경로에 복사한다.
+            try! fileMgr.copyItem(atPath: dbSource!, toPath: dbPath)
+        }
         
-        let sql = "CREATE TABLE IF NOT EXISTS sequence (num INTEGER)"
-        // CREATE로 시작하는 구문은 데이터베이스 테이블을 정의하는 SQL 구문으로써 DDL에 해당한다.
-        // 즉, sequence라는 이름의 테이블을 정의하라. 라는 뜻
-        // 하나의 INTEGER 타입 칼럼을 가지며 칼럼명은 num
-        // viewDidLoad는 앱이 재실행되거나, 화면이 다시 메모리에 로딩될 때 반복해서 호출되므로
-        // IF NOT EXISTS를 사용하여 테이블이 없는 경우에만 새로 테이블을 생성하도록 처리해준다.
+        
+        
+        
         
         // sqlite3 데이터베이스 관련 함수를 순서대로 호출한다.
         if sqlite3_open(dbPath, &db) == SQLITE_OK { // libsqlite3 라이브러리에 정의된 함수들은 정상적으로 실행되었을 때
@@ -64,7 +69,7 @@ class ViewController: UIViewController {
                 print("Prepare Statment Fail")
     
             }
-        sqltie3_close(db)
+        sqlite3_close(db)
         // DB연결을 종료한다. 이 과정에서 db객체가 해제됨.
         } else {
             print("Database Connect Fail")
